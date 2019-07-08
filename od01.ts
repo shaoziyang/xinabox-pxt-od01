@@ -149,7 +149,7 @@ namespace OD01 {
     /**
      * print a text in OLED
      */
-    //% block="print %s|color %color|newline %newlin"
+    //% block="print %s|color %color|newline %newline"
     //% s.defl="string"
     //% color.max=1 color.min=0 color.defl=1
     //% newline.defl=true
