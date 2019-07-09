@@ -159,7 +159,7 @@ namespace OD01 {
     //% color.max=1 color.min=0 color.defl=1
     //% newline.defl=true
     //% weight=80 blockGap=8 inlineInputMode=inline
-    export function print(s: string, color: number, newline: boolean = true) {
+    export function printString(s: string, color: number, newline: boolean = true) {
         for (let n = 0; n < s.length; n++) {
             char(s.charAt(n), _cx, _cy, color)
             _cx += 6
@@ -170,6 +170,18 @@ namespace OD01 {
         if (newline) {
             scroll()
         }
+    }
+
+    /**
+     * print a Number in OLED
+     */
+    //% block="print number %num|color %color|newline %newline"
+    //% s.defl="0"
+    //% color.max=1 color.min=0 color.defl=1
+    //% newline.defl=true
+    //% weight=80 blockGap=8 inlineInputMode=inline
+    export function printNumber(num: number, color: number, newline: boolean = true) {
+        printString(num.toString(), color, newline)
     }
 
     /**
@@ -294,4 +306,4 @@ namespace OD01 {
     }
 
     init();
-}
+} 
