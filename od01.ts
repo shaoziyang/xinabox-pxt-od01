@@ -16,6 +16,11 @@ namespace OD01 {
         DISPLAY_OFF = 0
     }
 
+    const MIN_X = 0
+    const MIN_Y = 0
+    const MAX_X = 127
+    const MAX_Y = 63
+
     let _I2CAddr = 60
     let _screen = pins.createBuffer(1025)
     let _buf2 = pins.createBuffer(2)
@@ -178,9 +183,11 @@ namespace OD01 {
     //% weight=71 blockGap=8 inlineInputMode=inline
     export function hline(x: number, y: number, len: number, color: number = 1) {
         let _sav = _DRAW
+        if ((y < MIN_Y) || (y > MAX_Y)) return
         _DRAW = 0
         for (let i = x; i < (x + len); i++)
-            pixel(i, y, color)
+            if ((i >= MIN_X) && (i <= MAX_X))
+                pixel(i, y, color)
         _DRAW = _sav
         draw(_DRAW)
     }
@@ -197,8 +204,10 @@ namespace OD01 {
     export function vline(x: number, y: number, len: number, color: number = 1) {
         let _sav = _DRAW
         _DRAW = 0
+        if ((x < MIN_X) || (x > MAX_X)) return
         for (let i = y; i < (y + len); i++)
-            pixel(x, i, color)
+            if ((i >= MIN_Y) && (i <= MAX_Y))
+                pixel(x, i, color)
         _DRAW = _sav
         draw(_DRAW)
     }
