@@ -261,6 +261,7 @@ namespace OD01 {
     //% blockId="OLED12864_I2C_CLEAR" block="Clear screen"
     //% weight=30 blockGap=8
     export function clear() {
+        _cx = _cy = 0
         _screen.fill(0)
         _screen[0] = 0x40
         draw(1)
